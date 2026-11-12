@@ -1,0 +1,29 @@
+{
+  "otari_url": "http://127.0.0.1:8000/api/v1",
+  "defaults": {
+    "max_usd": 0.1,
+    "max_rpm": 30,
+    "loop_threshold": 3
+  },
+  "agents": {
+    "researcher": {
+      "leash_key": "lk-change-me-leash-researcher",
+      "otari_key_env": "LEASH_RESEARCHER_OTARI_KEY",
+      "otari_key_name": "leash-researcher",
+      "allowed_tools": [
+        "search",
+        "read_file"
+      ]
+    },
+    "coder": {
+      "leash_key": "lk-change-me-leash-coder",
+      "otari_key_env": "LEASH_CODER_OTARI_KEY",
+      "otari_key_name": "leash-coder",
+      "allowed_tools": [
+        "search",
+        "read_file",
+        "run_shell"
+      ]
+    }
+  }
+}
