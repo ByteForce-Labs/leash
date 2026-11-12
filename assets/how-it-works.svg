@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="t d">
+  <title id="t">How Leash works</title>
+  <desc id="d">Agents call Leash with their own keys. Leash checks for loops, spend, dangerous actions, tool allowlists and rate limits, then forwards safe requests through Otari to the model. When a check fails, the agent is leashed: blocked with 403, its Otari key disabled, the event audited, until a human releases it.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" fill="#7c95f5"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" fill="#ff6b6b"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" fill="#4cc38a"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="640" rx="20" fill="#0e1013"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="48" y="58" fill="#f2f2ee" font-size="26" font-weight="700">How Leash works</text>
+    <text x="48" y="86" fill="#9a9a94" font-size="15">Every request and every tool call passes five checks. Fail one, and the agent is cut off at two layers.</text>
+
+    <!-- agents column -->
+    <g font-size="15" font-weight="600">
+      <text x="48" y="138" fill="#9a9a94" font-size="12" font-weight="700" letter-spacing="1.5">AGENTS</text>
+      <rect x="48" y="152" width="180" height="56" rx="12" fill="#1a1d23" stroke="#2e323b"/>
+      <text x="68" y="177" fill="#f2f2ee">researcher</text>
+      <text x="68" y="196" fill="#9a9a94" font-size="12" font-weight="400">own key · search, read_file</text>
+      <rect x="48" y="222" width="180" height="56" rx="12" fill="#1a1d23" stroke="#2e323b"/>
+      <text x="68" y="247" fill="#f2f2ee">coder</text>
+      <text x="68" y="266" fill="#9a9a94" font-size="12" font-weight="400">own key · + run_shell</text>
+      <rect x="48" y="292" width="180" height="56" rx="12" fill="#1a1d23" stroke="#2e323b"/>
+      <text x="68" y="317" fill="#f2f2ee">any OpenAI-style agent</text>
+      <text x="68" y="336" fill="#9a9a94" font-size="12" font-weight="400">base_url → Leash</text>
+    </g>
+    <path d="M232 250 H 300" stroke="#7c95f5" stroke-width="2.5" marker-end="url(#a)"/>
+
+    <!-- leash checks -->
+    <rect x="306" y="120" width="404" height="262" rx="16" fill="#151820" stroke="#7c95f5" stroke-width="2"/>
+    <text x="330" y="154" fill="#f2f2ee" font-size="20" font-weight="700">Leash</text>
+    <text x="400" y="154" fill="#9a9a94" font-size="13">checks before and after the model</text>
+    <g font-size="14">
+      <circle cx="338" cy="186" r="6" fill="#4cc38a"/>
+      <text x="354" y="191" fill="#f2f2ee" font-weight="600">Loop detection</text>
+      <text x="502" y="191" fill="#9a9a94">same or reworded calls ×3</text>
+      <circle cx="338" cy="226" r="6" fill="#f0a04b"/>
+      <text x="354" y="231" fill="#f2f2ee" font-weight="600">Spend cap</text>
+      <text x="502" y="231" fill="#9a9a94">real cost_usd from Otari</text>
+      <circle cx="338" cy="266" r="6" fill="#ff6b6b"/>
+      <text x="354" y="271" fill="#f2f2ee" font-weight="600">Dangerous actions</text>
+      <text x="502" y="271" fill="#9a9a94">rm -r, DROP TABLE, curl | sh</text>
+      <circle cx="338" cy="306" r="6" fill="#c792ea"/>
+      <text x="354" y="311" fill="#f2f2ee" font-weight="600">Tool allowlist</text>
+      <text x="502" y="311" fill="#9a9a94">only the tools you grant</text>
+      <circle cx="338" cy="346" r="6" fill="#7c95f5"/>
+      <text x="354" y="351" fill="#f2f2ee" font-weight="600">Rate limit</text>
+      <text x="502" y="351" fill="#9a9a94">429, slowed not stopped</text>
+    </g>
+
+    <!-- otari + model -->
+    <path d="M714 250 H 770" stroke="#4cc38a" stroke-width="2.5" marker-end="url(#g)"/>
+    <text x="742" y="238" fill="#4cc38a" font-size="12" font-weight="700" text-anchor="middle">safe</text>
+    <rect x="776" y="190" width="220" height="120" rx="16" fill="#1a1d23" stroke="#3a3f4a" stroke-width="2"/>
+    <text x="800" y="226" fill="#f2f2ee" font-size="20" font-weight="700">Otari gateway</text>
+    <text x="800" y="252" fill="#9a9a94" font-size="13">one key per agent</text>
+    <text x="800" y="272" fill="#9a9a94" font-size="13">daily budget per key</text>
+    <text x="800" y="292" fill="#9a9a94" font-size="13">usage + cost tracking</text>
+    <path d="M1000 250 H 1070" stroke="#7c95f5" stroke-width="2.5" marker-end="url(#a)"/>
+    <rect x="1076" y="200" width="156" height="100" rx="16" fill="#1a1d23" stroke="#3a3f4a" stroke-width="2"/>
+    <text x="1154" y="244" fill="#f2f2ee" font-size="18" font-weight="700" text-anchor="middle">Model</text>
+    <text x="1154" y="268" fill="#9a9a94" font-size="12" text-anchor="middle">Ollama · OpenAI · …</text>
+
+    <!-- trip path -->
+    <path d="M496 386 V 440" stroke="#ff6b6b" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#r)"/>
+    <text x="510" y="420" fill="#ff6b6b" font-size="13" font-weight="700">check fails</text>
+    <rect x="306" y="446" width="926" height="150" rx="16" fill="#1d1214" stroke="#ff6b6b" stroke-width="2"/>
+    <g transform="translate(346 492)" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round">
+      <rect x="-14" y="-2" width="28" height="22" rx="4" fill="#ff6b6b" fill-opacity="0.2"/>
+      <path d="M-8 -2 V-9 a8 8 0 0 1 16 0 V-2"/>
+    </g>
+    <text x="374" y="503" fill="#f2f2ee" font-size="20" font-weight="700">Agent leashed</text>
+    <g font-size="14">
+      <text x="334" y="546" fill="#ff6b6b" font-weight="700">1</text>
+      <text x="350" y="546" fill="#f2f2ee">Leash refuses it: <tspan fill="#9a9a94">403 on every request</tspan></text>
+      <text x="334" y="574" fill="#ff6b6b" font-weight="700">2</text>
+      <text x="350" y="574" fill="#f2f2ee">Otari disables its key: <tspan fill="#9a9a94">bypassing Leash gets 401</tspan></text>
+      <text x="740" y="546" fill="#ff6b6b" font-weight="700">3</text>
+      <text x="756" y="546" fill="#f2f2ee">Logged: <tspan fill="#9a9a94">audit.jsonl + dashboard</tspan></text>
+      <text x="740" y="574" fill="#ff6b6b" font-weight="700">4</text>
+      <text x="756" y="574" fill="#f2f2ee">A human clicks <tspan fill="#4cc38a" font-weight="700">Release</tspan><tspan fill="#9a9a94"> to restore both</tspan></text>
+    </g>
+    <path d="M886 446 C 886 400, 886 350, 886 316" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#r)"/>
+    <text x="896" y="420" fill="#ff6b6b" font-size="12" font-weight="700">PATCH is_active=false</text>
+  </g>
+</svg>

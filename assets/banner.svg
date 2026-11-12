@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="t d">
+  <title id="t">Leash</title>
+  <desc id="d">A kill switch for AI agents. Three agents connect to Leash; one is cut off.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.78" cy="0.5" r="0.45">
+      <stop offset="0" stop-color="#7c95f5" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#7c95f5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="400" rx="20" fill="#0e1013"/>
+  <rect width="1280" height="400" rx="20" fill="url(#grid)"/>
+  <rect width="1280" height="400" rx="20" fill="url(#glow)"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <text x="80" y="170" fill="#f2f2ee" font-size="96" font-weight="750" letter-spacing="-3">Leash</text>
+    <text x="84" y="222" fill="#f2f2ee" font-size="30" font-weight="600">A kill switch for AI agents.</text>
+    <text x="84" y="266" fill="#9a9a94" font-size="19">Per-agent keys, spend caps and tool rules,</text>
+    <text x="84" y="292" fill="#9a9a94" font-size="19">in front of Mozilla.ai's Otari gateway.</text>
+    <g font-size="14" font-weight="600">
+      <rect x="84" y="322" width="118" height="30" rx="15" fill="#4cc38a" fill-opacity="0.14" stroke="#4cc38a" stroke-opacity="0.5"/>
+      <text x="143" y="342" fill="#4cc38a" text-anchor="middle">loop detection</text>
+      <rect x="212" y="322" width="98" height="30" rx="15" fill="#f0a04b" fill-opacity="0.14" stroke="#f0a04b" stroke-opacity="0.5"/>
+      <text x="261" y="342" fill="#f0a04b" text-anchor="middle">spend caps</text>
+      <rect x="320" y="322" width="148" height="30" rx="15" fill="#ff6b6b" fill-opacity="0.14" stroke="#ff6b6b" stroke-opacity="0.5"/>
+      <text x="394" y="342" fill="#ff6b6b" text-anchor="middle">dangerous actions</text>
+    </g>
+
+    <!-- agents -->
+    <g font-size="15" font-weight="600">
+      <circle cx="760" cy="110" r="34" fill="#1a1d23" stroke="#4cc38a" stroke-width="2"/>
+      <text x="760" y="116" fill="#4cc38a" text-anchor="middle">AI</text>
+      <text x="760" y="170" fill="#c9c9c3" text-anchor="middle" font-size="14">researcher</text>
+
+      <circle cx="760" cy="290" r="34" fill="#1a1d23" stroke="#ff6b6b" stroke-width="2"/>
+      <text x="760" y="296" fill="#ff6b6b" text-anchor="middle">AI</text>
+      <text x="760" y="350" fill="#c9c9c3" text-anchor="middle" font-size="14">coder</text>
+    </g>
+
+    <!-- links -->
+    <path d="M794 110 C 860 110, 880 200, 950 200" fill="none" stroke="#4cc38a" stroke-width="3"/>
+    <path d="M794 290 C 830 290, 845 260, 860 248" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-dasharray="7 7"/>
+    <g transform="translate(872 238)">
+      <circle r="17" fill="#2a1416" stroke="#ff6b6b" stroke-width="2"/>
+      <path d="M-7 -7 L7 7 M7 -7 L-7 7" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <text x="872" y="282" fill="#ff6b6b" font-size="13" font-weight="700" text-anchor="start" dx="-12">rm -rf blocked</text>
+
+    <!-- leash box -->
+    <rect x="950" y="150" width="120" height="100" rx="18" fill="#1a1d23" stroke="#7c95f5" stroke-width="2.5"/>
+    <g transform="translate(1010 186)" fill="none" stroke="#7c95f5" stroke-width="3" stroke-linecap="round">
+      <rect x="-14" y="-2" width="28" height="22" rx="4" fill="#7c95f5" fill-opacity="0.2"/>
+      <path d="M-8 -2 V-9 a8 8 0 0 1 16 0 V-2"/>
+    </g>
+    <text x="1010" y="232" fill="#f2f2ee" font-size="17" font-weight="700" text-anchor="middle">Leash</text>
+
+    <!-- to otari -->
+    <path d="M1070 200 H 1120" stroke="#7c95f5" stroke-width="3"/>
+    <rect x="1120" y="168" width="110" height="64" rx="14" fill="#1a1d23" stroke="#3a3f4a" stroke-width="2"/>
+    <text x="1175" y="196" fill="#f2f2ee" font-size="16" font-weight="700" text-anchor="middle">Otari</text>
+    <text x="1175" y="218" fill="#9a9a94" font-size="12" text-anchor="middle">gateway</text>
+  </g>
+</svg>

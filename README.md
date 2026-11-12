@@ -1,8 +1,6 @@
 <div align="center">
 
-# Leash
-
-**A kill switch for AI agents.**
+<img src="assets/banner.svg" alt="Leash: a kill switch for AI agents" width="100%">
 
 Give every agent its own key, spending cap and tool rules. When an agent loops, overspends or tries something dangerous, Leash cuts it off, and [Mozilla.ai's Otari gateway](https://github.com/mozilla-ai/otari) disables its key too, until a human lets it go.
 
@@ -28,18 +26,7 @@ Leash sits between your agents and the AI models. It watches every request and e
 
 ## How it works
 
-```mermaid
-flowchart LR
-    A1[Agent: researcher] -->|own Leash key| L{Leash}
-    A2[Agent: coder] -->|own Leash key| L
-    L -->|checks pass| O[Otari gateway<br/>per-agent key + budget]
-    O --> M[Model]
-    M -->|answer / tool call| L
-    L -->|safe| A1
-    L -.->|loop · overspend · dangerous tool call| K[🔒 Agent leashed]
-    K -.->|PATCH key is_active=false| O
-    K --> D[Dashboard: audit trail,<br/>Kill / Release]
-```
+<img src="assets/how-it-works.svg" alt="How Leash works: agents call Leash, which runs five checks before forwarding through Otari to the model. A failed check leashes the agent: 403 from Leash, its Otari key disabled, the event logged, until a human releases it." width="100%">
 
 | Check | When | What happens |
 |---|---|---|
@@ -62,7 +49,9 @@ python3 leash.py --mock     # four demo agents and a mock Otari gateway
 python3 demo.py             # in a second terminal
 ```
 
-Then open the **dashboard link Leash printed** (it ends in `#admin=…`).
+Then open the **dashboard link Leash printed** (it ends in `#admin=…`):
+
+<img src="assets/dashboard.png" alt="The Leash dashboard after the demo: helper is active; looper, rogue and spender are leashed with their reasons and Otari keys disabled, above an audit trail showing the blocked rm -rf call." width="100%">
 
 ```
 == helper ==
